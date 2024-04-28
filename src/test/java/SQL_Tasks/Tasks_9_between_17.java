@@ -35,13 +35,24 @@ public class Tasks_9_between_17 extends DBUtility {
             }
             System.out.println();
         }
-
-
-
-
-
-
     }
+
+    @Test
+    public void Task11() {
+        List<List<String>> dbList = getListData("SELECT emp_no, salary, to_date FROM salaries WHERE emp_no = '10102' ORDER BY to_date;");
+
+        System.out.println("**** Find the salary increases for employee with employee number '10102' (using the to_date column in salaries) ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
 
 
 }
