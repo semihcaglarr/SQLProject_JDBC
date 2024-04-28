@@ -67,6 +67,23 @@ public class Tasks_9_between_17 extends DBUtility {
         }
     }
 
+    @Test
+    public void Task13() {
+        List<List<String>> dbList = getListData("SELECT emp_no, salary, to_date FROM salaries WHERE (emp_no, to_date) IN (SELECT emp_no, MAX(to_date) FROM salaries GROUP BY emp_no);");
+
+        System.out.println("**** Find the latest salaries for each employee ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+
 
 
 
