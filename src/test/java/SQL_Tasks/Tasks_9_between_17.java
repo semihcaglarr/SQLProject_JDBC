@@ -98,6 +98,23 @@ public class Tasks_9_between_17 extends DBUtility {
         }
     }
 
+    @Test
+    public void Task15() {
+        List<List<String>> dbList = getListData("SELECT e.first_name, e.last_name, MAX(s.salary) AS max_salary FROM employees e INNER JOIN dept_emp de ON e.emp_no = de.emp_no INNER JOIN departments d ON de.dept_no = d.dept_no INNER JOIN salaries s ON e.emp_no = s.emp_no WHERE d.dept_name = 'Research' GROUP BY e.first_name, e.last_name ORDER BY max_salary DESC LIMIT 1;");
+
+        System.out.println("**** Find the Employee with the Highest Salary Average in the Research Department ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+
 
 
 
