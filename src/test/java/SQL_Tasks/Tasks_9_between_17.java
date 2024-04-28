@@ -113,6 +113,44 @@ public class Tasks_9_between_17 extends DBUtility {
         }
     }
 
+    @Test
+        public void Task16() {
+            List<List<String>> dbList = getListData("SELECT d.dept_name AS department, e.first_name, e.last_name, MAX(s.salary) AS max_salary FROM employees e INNER JOIN dept_emp de ON e.emp_no = de.emp_no INNER JOIN departments d ON de.dept_no = d.dept_no INNER JOIN salaries s ON e.emp_no = s.emp_no GROUP BY d.dept_name ORDER BY max_salary DESC;");
+
+            System.out.println("**** For each department, identify the employee with the highest single salary ever recorded ****");
+            System.out.println("**** List the department name, employee's first name, last name, and the peak salary amount ****");
+            System.out.println("**** Ordered by the peak salary in descending order ****");
+            System.out.println();
+
+            // Define column widths for better formatting
+            final int departmentWidth = 21;
+            final int firstNameWidth = 15;
+            final int lastNameWidth = 15;
+            final int salaryWidth = 10;
+
+            // Print header row
+            System.out.format("%-" + departmentWidth + "s", "Department");
+            System.out.format("%-" + firstNameWidth + "s", "First Name");
+            System.out.format("%-" + lastNameWidth + "s", "Last Name");
+            System.out.format("%" + salaryWidth + "s\n", "Salary");
+
+            // Print separator line
+            for (int i = 0; i < departmentWidth + firstNameWidth + lastNameWidth + salaryWidth + 6; i++) {
+                System.out.print("-");
+            }
+            System.out.println();
+
+            // Iterate through each row and format using String.format
+            for (List<String> row : dbList) {
+                String formattedRow = String.format("%-" + departmentWidth + "s", row.get(0)) +
+                        String.format("%-" + firstNameWidth + "s", row.get(1)) +
+                        String.format("%-" + lastNameWidth + "s", row.get(2)) +
+                        String.format("%" + salaryWidth + "d", Integer.parseInt(row.get(3)));
+                System.out.println(formattedRow);
+            }
+        }
+
+    }
 
 
 
@@ -124,4 +162,7 @@ public class Tasks_9_between_17 extends DBUtility {
 
 
 
-}
+
+
+
+
