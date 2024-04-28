@@ -52,6 +52,23 @@ public class Tasks_9_between_17 extends DBUtility {
         }
     }
 
+    @Test
+    public void Task12() {
+        List<List<String>> dbList = getListData("SELECT * FROM employees JOIN salaries ON employees.emp_no = salaries.emp_no ORDER BY salary DESC LIMIT 1;");
+
+        System.out.println("**** Find the employee with the highest salary ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+
 
 
 
