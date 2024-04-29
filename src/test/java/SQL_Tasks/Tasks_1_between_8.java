@@ -17,7 +17,21 @@ public class Tasks_1_between_8 extends DBUtility {
         System.out.println();
 
         for (int i = 0; i < dbList.size(); i++) {
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
 
+    @Test
+    public void Task2() {
+        List<List<String>> dbList = getListData("SELECT employees.* FROM employees INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no INNER JOIN departments ON dept_emp.dept_no = departments.dept_no WHERE departments.dept_name = 'Human Resources';;");
+
+        System.out.println("**** List all employees in 'Human Resources' department ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
             for (int j = 0; j < dbList.get(i).size(); j++) {
                 System.out.print(dbList.get(i).get(j) + " ");
             }
@@ -73,8 +87,6 @@ public class Tasks_1_between_8 extends DBUtility {
         }
 
     }
-
-
 
 
 }
