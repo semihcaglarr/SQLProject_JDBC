@@ -8,6 +8,23 @@ import java.util.List;
 
 public class Tasks_1_between_8 extends DBUtility {
 
+
+    @Test
+    public void Task1() {
+        List<List<String>> dbList = getListData("SELECT * FROM employees INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no WHERE dept_no = 'D001';");
+
+        System.out.println("**** List all employees in department D001 ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
+
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
+
     @Test
     public void Task3() throws SQLException {
         DBConnectionOpen();
