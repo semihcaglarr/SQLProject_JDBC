@@ -56,5 +56,21 @@ public class Tasks_17_between_24 extends DBUtility {
         }
     }
 
+    @Test
+    public void Task20(){
+        List<List<String>> dbList = getListData("SELECT e.first_name, e.last_name, e.hire_date, s.salary FROM employees e JOIN salaries s ON e.emp_no = s.emp_no WHERE e.hire_date BETWEEN '1985-01-01' AND '1989-12-31' AND e.emp_no IN (SELECT emp_no FROM dept_emp WHERE dept_no IN (SELECT dept_no FROM departments WHERE dept_name = 'Sales')) ORDER BY s.salary DESC LIMIT 10000;");
+
+        System.out.println("**** List the names, last names, hire dates, and salaries of all employees ****");
+        System.out.println("**** In the Sales department who were hired between January 01, 1985 and December 31, 1989, sorted by salary in descending order. ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+    }
+
 }
 
