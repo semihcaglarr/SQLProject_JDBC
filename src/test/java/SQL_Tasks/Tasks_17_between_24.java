@@ -24,4 +24,26 @@ public class Tasks_17_between_24 extends DBUtility {
             System.out.println();
         }
     }
+
+    @Test
+    public void Task18(){
+        List<List<String>> dbList = getListData("SELECT d.dept_name AS department, e.first_name, e.last_name, MAX(s.salary) AS max_salary FROM employees e INNER JOIN dept_emp de ON e.emp_no = de.emp_no INNER JOIN departments d ON de.dept_no = d.dept_no INNER JOIN salaries s ON e.emp_no = s.emp_no GROUP BY d.dept_name ORDER BY max_salary DESC;");
+
+        System.out.println("**** For each department, identify the employee with the highest single salary ever recorded ****");
+        System.out.println("**** List the department name, employee's first name, last name, and the peak salary amount ****");
+        System.out.println("**** Order the results by the peak salary in descending order ****");
+        System.out.println();
+
+        for (int i = 0; i < dbList.size(); i++) {
+            for (int j = 0; j < dbList.get(i).size(); j++) {
+                System.out.print(dbList.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+
+
+
+
+
+    }
 }

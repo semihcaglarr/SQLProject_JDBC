@@ -11,7 +11,7 @@ public class Tasks_1_between_8 extends DBUtility {
 
     @Test
     public void Task1() {
-        List<List<String>> dbList = getListData("SELECT * FROM employees INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no WHERE dept_no = 'D001';");
+        List<List<String>> dbList = getListData("SELECT * FROM employees INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no WHERE dept_no = 'D001' LIMIT 22536;");
 
         System.out.println("**** List all employees in department D001 ****");
         System.out.println();
@@ -59,7 +59,7 @@ public class Tasks_1_between_8 extends DBUtility {
 
     @Test
     public void Task7() {
-        List<List<String>> dbList = getListData("SELECT e.* FROM employees e INNER JOIN salaries s ON e.emp_no = s.emp_no WHERE s.salary BETWEEN 50000 AND 100000 LIMIT 5000;");
+        List<List<String>> dbList = getListData("SELECT e.* FROM employees e INNER JOIN salaries s ON e.emp_no = s.emp_no WHERE s.salary BETWEEN 50000 AND 100000 LIMIT 22536;");
 
         System.out.println("**** This query retrieves employees who have salaries between 50000 and 100000 ****");
         System.out.println();
