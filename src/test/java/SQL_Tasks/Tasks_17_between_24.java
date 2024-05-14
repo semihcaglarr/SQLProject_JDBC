@@ -72,5 +72,67 @@ public class Tasks_17_between_24 extends DBUtility {
         }
     }
 
+    @Test
+    public void Task21(){
+
+        //a-)
+        List<List<String>> dbListA = getListData("SELECT COUNT(gender) AS Male_Count FROM employees WHERE gender = 'M';");
+
+        System.out.println("**** A: Find the count of male employees (179973) ****");
+
+        for (int i = 0; i < dbListA.size(); i++) {
+            for (int j = 0; j < dbListA.get(i).size(); j++) {
+                System.out.print(dbListA.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("*************************************************************");
+
+        //B-)
+        List<List<String>> dbListB = getListData("SELECT COUNT(gender) AS Female_Count FROM employees WHERE gender = 'F';");
+
+        System.out.println("**** B: Determine the count of female employees (120050) ****");
+        for (int i = 0; i < dbListB.size(); i++) {
+            for (int j = 0; j < dbListB.get(i).size(); j++) {
+                System.out.print(dbListB.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("*************************************************************");
+
+        //C-)
+        List<List<String>> dbListC = getListData("SELECT gender, COUNT(*) AS count FROM employees GROUP BY gender;");
+
+        System.out.println("**** C: Find the number of male and female employees by grouping ****");
+        for (int i = 0; i < dbListC.size(); i++) {
+            for (int j = 0; j < dbListC.get(i).size(); j++) {
+                System.out.print(dbListC.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("*************************************************************");
+
+        //D-)
+        List<List<String>> dbListD = getListData("SELECT COUNT(emp_no) AS Total_Employees FROM employees;");
+
+        System.out.println("**** D: Calculate the total number of employees in the company (300023) ****");
+        for (int i = 0; i < dbListD.size(); i++) {
+            for (int j = 0; j < dbListD.get(i).size(); j++) {
+                System.out.print(dbListD.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+
+
+
+
+
+    }
+
+
+
 }
 
